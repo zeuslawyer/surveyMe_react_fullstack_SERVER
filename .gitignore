@@ -1,0 +1,10 @@
+#FOLDERS
+*/node_modules
+/node_modules
+/client/build
+
+
+#FILES
+dev-secrets.js
+*.env
+*.env.production
