@@ -36,7 +36,7 @@ require('./routes/billingRoutes.js')(app)
 /* CONFIGURE THE SERVER TO SERVE REACT APP ROUTING WHERE 
 SERVER ROUTES ARE NOT MATCHED  --  ONLY in PROD ,as in dev, there are two
 servers running on local machine (3000 and 5000)
-*/
+*/ 
 
 if(process.env.NODE_ENV === "production") {
   //direct express to use static folder 
