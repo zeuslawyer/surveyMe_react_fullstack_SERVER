@@ -2,11 +2,12 @@ const passport = require("passport");
 const { stripeSecretKey } = require("../config/secrets.js");
 const stripe = require("stripe")(stripeSecretKey);
 const mongoose = require("mongoose");
-const requireLogin  = require("../middlewares/requireLogin.js");
+const requireLogin = require("../middlewares/requireLogin.js");
 
 //req.user is the User model....
 
 module.exports = app => {
+  console.log(" *** billing routes mounted ***");
   //handle stripe payment
   app.post("/api/stripe", requireLogin, async (req, res) => {
     // console.log(req.body)

@@ -2,6 +2,7 @@ const passport = require("passport");
 
 // export the route handler middlerwares AS A FUNCTION, that gets mounted when invoked in /index.js
 module.exports = app => {
+  console.log("*** auth routes mounted ***");
   app.get(
     "/auth/google",
     passport.authenticate("google", {
@@ -28,8 +29,6 @@ module.exports = app => {
     console.log("API endpoit to get current user hit.... ", __filename);
     res.send(req.user); //returns null if no user signed in
   });
-
- 
 
   //LOG OUT
   app.get("/api/logout", (req, res) => {
