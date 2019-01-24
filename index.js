@@ -39,7 +39,7 @@ servers running on local machine (3000 and 5000)
 */
 
 if(process.env.NODE_ENV === "production") {
-  //use static folder
+  //direct express to use static folder 
   app.use(express.static('client/build'));
 
   //wildcard route handler redirects all unrecognised routes to react index.html
