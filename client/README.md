@@ -1,3 +1,5 @@
+## THIS IS FOR THE CLIENT APP ONLY, and IS BOILERPLATE CREATE REACT APP README.   THE PROJECT HAS A SEPARATE README IN THE ROOT.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
