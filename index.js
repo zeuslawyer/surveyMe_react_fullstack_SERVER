@@ -1,10 +1,10 @@
 const express = require("express");
-const CONFIG = require('./config/secrets.js');
+const CONFIG = require("./config/secrets.js");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
-const bodyParser = require('body-parser')
-const path = require('path')
+const bodyParser = require("body-parser");
+const path = require("path");
 
 //WIRE UP MONGOOSE
 require("./models/User.js");
@@ -27,24 +27,33 @@ app.use(cookieSession(cookieSessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 
+/*
+Mount the routes    - by loading the 
+exported routing middleware functions 
+AND immediately invoking them....
+NOTE:  root '/' path not needed as 
+1) app.js has Router set up to send / routes to Landing component
+2)we've added catchall "*"
+route handler below to serve static file"
+*/
 
-//Mount the routes    - by loading the exported routing middleware functions AND immediately invoking them
-require("./routes/index.js")(app);
+// require("./routes/index.js")(app);
+
 require("./routes/authRoutes.js")(app);
-require('./routes/billingRoutes.js')(app)
+require("./routes/billingRoutes.js")(app);
 
 /* CONFIGURE THE SERVER TO SERVE REACT APP ROUTING WHERE 
 SERVER ROUTES ARE NOT MATCHED  --  ONLY in PROD ,as in dev, there are two
 servers running on local machine (3000 and 5000)
-*/ 
+*/
 
-if(process.env.NODE_ENV === "production") {
-  //direct express to use static folder 
-  app.use(express.static('client/build'));
+if (process.env.NODE_ENV === "production") {
+  //direct express to use static folder
+  app.use(express.static("client/build"));
 
   //wildcard route handler redirects all unrecognised routes to react index.html
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'))
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
